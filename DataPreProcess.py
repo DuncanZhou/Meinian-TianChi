@@ -65,7 +65,7 @@ def ConvertToCSV(patients,operations,labels):
     features = [op for op in operations]
     label = ['A','B','C','D','E']
     header.extend(features)
-    header.extend(label_path)
+    header.extend(label)
     csv_writer.writerow(header)
     count = 0
     for id in patients.keys():
@@ -106,5 +106,5 @@ def run():
     #     lines = f.readlines()
     #     for line in lines:
     #         print line
-# test()
+run()
 
