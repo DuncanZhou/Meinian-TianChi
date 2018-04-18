@@ -86,6 +86,26 @@ def ConvertToCSV(patients,operations,labels):
     print "共写入%d个病人" % count
     Training.close()
 
+def DeleteNaN(df):
+    # 删除全为空值列
+    df = df.dropna(how='all',axis=1)
+    return df
+
+def FillNaNCols(df):
+    na = {}
+    for col in df.columns:
+        # 使用众数填充
+        temp = df[col].isnull()
+        counts = df[col][temp[temp == False].index].value_counts()
+        na[col] = counts.index[0]
+    df = df.fillna(na)
+    return df
+# 删除无用列
+def DeleteUnique(df):
+    for col in df.columns:
+        if len(df[col].unique()) == 1:
+            del df[col]
+
 def run():
     patients = {}
     ids = set()
