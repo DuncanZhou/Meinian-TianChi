@@ -86,7 +86,7 @@ def ConvertToCSV(patients,operations,labels):
     print "共写入%d个病人" % count
     Training.close()
 
-def test():
+def run():
     patients = {}
     ids = set()
     operations = set()
